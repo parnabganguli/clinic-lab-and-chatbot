@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FDFBF7;
+  --foreground: #1A2B3C;
+  --primary: #B08D57;
+  --primary-hover: #C9A86A;
+  --trust: #1A365D;
+  --secondary: #2C3E50;
+  --accent: #E5D5B7;
+  --card: #FFFFFF;
+  --card-foreground: #1A2B3C;
+  --muted: #F3F0E9;
+  --muted-foreground: #64748B;
+  --border: #E2E8F0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-trust: var(--trust);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  
+  --radius-lg: 1rem;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.luxury-gradient {
+  background: linear-gradient(135deg, #B08D57 0%, #C9A86A 100%);
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
