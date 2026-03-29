@@ -43,12 +43,12 @@ export default function AIChatAssistant() {
       });
 
       const data = await response.json();
-      const reply = data.text ?? data.error ?? "I'm having trouble connecting right now.";
+      const reply = data.text ?? data.error ?? "Aura Clinic is currently updating. Please use the WhatsApp button for immediate assistance.";
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch {
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "I'm sorry, I'm unable to reach our systems right now." },
+        { role: "assistant", content: "Aura Clinic is currently updating. Please use the WhatsApp button for immediate assistance." },
       ]);
     } finally {
       setIsLoading(false);

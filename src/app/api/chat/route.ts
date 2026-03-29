@@ -1,6 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -15,7 +18,9 @@ export async function POST(req: Request) {
       });
     }
 
-    const genAI = new GoogleGenerativeAI("AIzaSyDS1JzRDNr2qOAsyjKxmaY_zpsQNDx8qnk");
+    const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+    if (!apiKey) throw new Error('API Key Missing');
+    const genAI = new GoogleGenerativeAI(apiKey);
     
     // Stable endpoint initialization
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" }, { apiVersion: "v1" });
@@ -43,7 +48,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error("Chat API Error:", error.message, error);
     return NextResponse.json(
-      { error: `Failed to process chat: ${error.message}` },
+      { error: "Aura Clinic is currently updating. Please use the WhatsApp button for immediate assistance." },
       { status: 500 }
     );
   }
